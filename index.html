@@ -1,27 +1,22 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device_width, initial_scale=1.0">
-        <title> Calculator </title>
-    </head>
-    <body>
-
-        <div id="ControlPanel">
-            <form id="InputNumber">
-
-            </form>
-<button id="addition" onclick="addition()"">Add</button>
-<button id="subtraction" onclick="subtraction()">Subtract</button>
-<button id="multiplication" onclick="multiplication()">Multiply</button>
-<button id="division" onclick="division()">Divide</button>
-        </div>
-
-        <div id="Display">
-
-        </div>
-
-        </div>
-<script src="script.js"></script>
-    </body>
-</html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device_width, initial_scale=1.0">
+            <title>Calculator</title>
+        </head>
+        <body>
+            <div id="ControlPanel">
+                <form>
+                    <input id="input" type="text" placeholder="0"></input>
+                    <button onclick="addition()" type="button">Add</button>
+                    <button onclick="subtraction()" type="button">Subtract</button>
+                    <button onclick="multiplication()" type="button">Multiply</button>
+                    <button onclick="division()" type="button">Divide</button>
+                </form>
+            </div>
+            <div id="ResultDisplay">
+            </div>
+            <script src="script.js"></script>
+        </body>
+    </html>

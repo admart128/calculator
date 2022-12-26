@@ -1,39 +1,37 @@
-let output
+let calculation = 0
+document.getElementById("ResultDisplay").innerHTML = calculation
+let input = 0
 
-//Control Panel
-
-let additionInput = 1
-let subtractionInput = 1
-let multiplicationInput = 1
-let divisionInput = 1
-
-//Functions (like buttons on a physical calculator)
-
-    //addition
-
+//addition 
 let addition = () => {
-output = output + additionInput
-document.getElementById("addition").innerHTML = output
-}
+    input = document.getElementById("input").value
+    input = parseInt(input)
+    calculation = calculation + input
+    document.getElementById("ResultDisplay").innerHTML = calculation
+    }
 
-    //subtraction
+//subtraction
 let subtraction = () => {
-output = output - subtractionInput
+    input = document.getElementById("input").value
+    input = parseInt(input)
+    calculation = calculation - input
+    document.getElementById("ResultDisplay").innerHTML = calculation 
+    }
 
-document.getElementById("subtraction").innerHTML = output
-}
-
-    //multiplication
+//multiplication
 let multiplication = () => {
-output = output * multiplicationInput
-document.getElementById("multiplication").innerHTML = output
-}
+    input = document.getElementById("input").value
+    input = parseInt(input)
+    calculation = calculation * input
+    document.getElementById("ResultDisplay").innerHTML = calculation
+    }
 
-    //division
+//division
 let division = () => {
-output = output / divisionInput
-document.getElementByClassName("division").innerHTML = output
-}
+    input = document.getElementById("input").value
+    input = parseInt(input)
+    calculation = calculation / input
+    document.getElementById("ResultDisplay").innerHTML = calculation
+    }
 
-document.getElementById("Display").innerHTML = output
-console.log(output)
+//print calculation
