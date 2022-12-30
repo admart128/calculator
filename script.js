@@ -1,120 +1,264 @@
+//// 2022-12-27 THIS CODE IS A MESS. COMBINE FUNCTIONS INTO CLASSES NEXT.
+
+
 let calculation = 0
 document.getElementById("ResultDisplay").innerHTML = calculation
-let input = 0
+let inputForFirstCalculator = 0
 
 //addition 
 let addition = () => {
-    input = document.getElementById("input").value
-    input = parseInt(input)
-    calculation = calculation + input
+    inputForFirstCalculator = document.getElementById("inputForFirstCalculator").value
+    inputForFirstCalculator = parseInt(inputForFirstCalculator)
+    calculation = calculation + inputForFirstCalculator
     document.getElementById("ResultDisplay").innerHTML = calculation
     }
 
 //subtraction
 let subtraction = () => {
-    input = document.getElementById("input").value
-    input = parseInt(input)
-    calculation = calculation - input
+    inputForFirstCalculator = document.getElementById("inputForFirstCalculator").value
+    inputForFirstCalculator = parseInt(inputForFirstCalculator)
+    calculation = calculation - inputForFirstCalculator
     document.getElementById("ResultDisplay").innerHTML = calculation 
     }
 
 //multiplication
 let multiplication = () => {
-    input = document.getElementById("input").value
-    input = parseInt(input)
-    calculation = calculation * input
+    inputForFirstCalculator = document.getElementById("inputForFirstCalculator").value
+    inputForFirstCalculator = parseInt(inputForFirstCalculator)
+    calculation = calculation * inputForFirstCalculator
     document.getElementById("ResultDisplay").innerHTML = calculation
     }
 
 //division
 let division = () => {
-    input = document.getElementById("input").value
-    input = parseInt(input)
-    calculation = calculation / input
+    inputForFirstCalculator = document.getElementById("inputForFirstCalculator").value
+    inputForFirstCalculator = parseInt(inputForFirstCalculator)
+    calculation = calculation / inputForFirstCalculator
     document.getElementById("ResultDisplay").innerHTML = calculation
     }
 
+///////////////////////////
+//////////////////////////
+///// OLD CALCULATOR ABOVE, NEW CALCULATOR BELOW ///
+//////////////////////
+//////////////////////
+
+let input = 0
+    let result = 0
+    let firstOperand
+    let operator
+    let secondOperand
+    let readyToInputFirstOperand = true
+    let readyToInputOperator = false
+    let readyToClearUserDisplayForSecondOperand = true
+    let readyToInputSecondOperand = false
+    let readyToCalculateResult = false
+
+
+
     let input0 = () => {
-        input = 0
+        
+if (readyToInputFirstOperand == true) { 
+
+
+        input = input + "0"
+        input = parseInt(input)
+        firstOperand = input
         document.getElementById("ResultDisplay2").innerHTML = input
+        readyToInputOperator = true
+}
+    else if (readyToInputSecondOperand == true) {
+
+        input = input + "0"
+        input = parseInt(input)
+        secondOperand = input
+        document.getElementById("ResultDisplay2").innerHTML = input
+readyToCalculateResult = true
+
     }
+
+
+
+}
+
+
 
     let input1 = () => {
-        input = 1
+        
+
+        if (readyToInputFirstOperand == true) {
+
+        input = input + "1"
+        input = parseInt(input)
+        firstOperand = input
+        readyToInputOperator = true
+        document.getElementById("ResultDisplay2").innerHTML = input
+        }
+        else if (readyToInputSecondOperand == true) {
+
+            input = input + "1"
+            input = parseInt(input)
+            readyToCalculateResult = true
+            document.getElementById("ResultDisplay2").innerHTML = input
+
+        }
+    }
+
+    function operandInput(a) {
+        input = input + a
+        input = parseInt(input)
         document.getElementById("ResultDisplay2").innerHTML = input
     }
 
+
     let input2 = () => {
-        input = 2
-        document.getElementById("ResultDisplay2").innerHTML = input
+        //operandInput(2)
+        //input = input + "2"
+        //input = parseInt(input)
+        //document.getElementById("ResultDisplay2").innerHTML = input
     }
 
     let input3 = () => {
-        input = 3
+        input = input + "3"
+        input = parseInt(input)
         document.getElementById("ResultDisplay2").innerHTML = input
     }
 
     let input4 = () => {
-        input = 4
+        input = input + "4"
+        input = parseInt(input)
         document.getElementById("ResultDisplay2").innerHTML = input
     }
     
     let input5 = () => {
-        input = 5
+        input = input + "5"
+        input = parseInt(input)
         document.getElementById("ResultDisplay2").innerHTML = input
     }
 
     let input6 = () => {
-        input = 6
+        input = input + "6"
+        input = parseInt(input)
         document.getElementById("ResultDisplay2").innerHTML = input
     }
 
     let input7 = () => {
-        input = 7
+        input = input + "7"
+        input = parseInt(input)
         document.getElementById("ResultDisplay2").innerHTML = input
     }
 
     let input8 = () => {
-        input = 8
+        input = input + "8"
+        input = parseInt(input)
         document.getElementById("ResultDisplay2").innerHTML = input
     }
 
     let input9 = () => {
-        input = 9
+        input = input + "9"
+        input = parseInt(input)
         document.getElementById("ResultDisplay2").innerHTML = input
     }
 
 
-    let operator
+
+    // OPERATOR INPUT IS FUNCTIONING
 
     let inputAddition = () => {
-        operator = "+"
+
+
+        if (readyToInputOperator) {
+            true; {
+            operator = "+"
+            readyToInputFirstOperand = false
+            readyToClearUserDisplayForSecondOperand = true
+            readyToInputSecondOperand = true
+            }
+        }
     }
 
     let inputSubtraction = () => {
+        if (readyToInputOperator) {
+            true; {
+        
         operator = "-"
+        readyToInputFirstOperand = false
+        readyToClearUserDisplayForSecondOperand = true
+        readyToInputSecondOperand = true
+            }
+        }
     }
 
     let inputMultiplication = () => {
+        if (readyToInputOperator) {
+            true; {
+        
         operator = "*"
+        readyToInputFirstOperand = false
+        readyToClearUserDisplayForSecondOperand = true
+        readyToInputSecondOperand = true
+            }
+        }
     }
 
     let inputDivision = () => {
-       operator = "/" 
+       if (readyToInputOperator) {
+true ; {
+       
+        operator = "/"
+        readyToInputFirstOperand = false
+        readyToClearUserDisplayForSecondOperand = true
+        readyToInputSecondOperand = true
+}
+    } 
     }
 
     let calculateResult = () => {
         switch(operator) {
+            
             case "+":
+            input = firstOperand + secondOperand
+            readyToInputFirstOperand = true
+            readyToClearUserDisplayForSecondOperand = false
+            readyToInputOperator = false
+            readyToInputSecondOperand = false
+            readyToCalculateResult = false
+            
+            document.getElementById("ResultDisplay2").innerHTML = input
             console.log("Addition")
             break
+
             case "-":
+                input = firstOperand - secondOperand
+                readyToInputFirstOperand = true
+                readyToClearUserDisplayForSecondOperand = false
+            readyToInputOperator = false
+            readyToInputSecondOperand = false
+            readyToCalculateResult = false
+                document.getElementById("ResultDisplay2").innerHTML = input
+
             console.log("Subtraction")
             break
+            
             case "*":
-            console.log("Multiplication")
+                input = firstOperand * secondOperand
+                readyToInputFirstOperand = true
+                readyToClearUserDisplayForSecondOperand = false
+            readyToInputOperator = false
+            readyToInputSecondOperand = false
+            readyToCalculateResult = false
+            document.getElementById("ResultDisplay2").innerHTML = input
+                console.log("Multiplication")
             break
+            
             case "/":
+            input = firstOperand / secondOperand
+            readyToInputFirstOperand = true
+            readyToClearUserDisplayForSecondOperand = false
+            readyToInputOperator = false
+            readyToInputSecondOperand = false
+            readyToCalculateResult = false
+            document.getElementById("ResultDisplay2").innerHTML = input
             console.log("Division")
             break
         }
