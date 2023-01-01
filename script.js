@@ -7,6 +7,17 @@ let readyForOperator = false
 let readyForSecondOperand = false
 let readyForResult = false
 
+function debug() {
+    console.log("firstOperand: " + firstOperand)
+    console.log("operator: " + operator)
+    console.log("secondOperand: " + secondOperand)
+    console.log("result: " + result)
+    console.log("readyForFirstOperand: " + readyForFirstOperand)
+    console.log("readyForOperator: " + readyForOperator)
+    console.log("readyForSecondOperand: " + readyForSecondOperand)
+    console.log("readyForResult: " + readyForResult) 
+}
+
 function inputOperand(a) { 
     if (readyForFirstOperand) {
         firstOperand = firstOperand + a
@@ -43,31 +54,35 @@ function getResult() {
         switch(operator) {
             case "+":
                 result = firstOperand + secondOperand
+                firstOperand = result
                 document.getElementById("UI_Display").innerHTML = result
-                readyForFirstOperand = true
-                readyForSecondOperand = false
+                readyForOperator = true
                 readyForResult = false
+                secondOperand = 0
                 break
             case "-":
                 result = firstOperand - secondOperand
+                firstOperand = result
                 document.getElementById("UI_Display").innerHTML = result
-                readyForFirstOperand = true
-                readyForSecondOperand = false
+                readyForOperator = true
                 readyForResult = false
+                secondOperand = 0
                 break
             case "*":
                 result = firstOperand * secondOperand
+                firstOperand = result
                 document.getElementById("UI_Display").innerHTML = result
-                readyForFirstOperand = true
-                readyForSecondOperand = false
+                readyForOperator = true
                 readyForResult = false
+                secondOperand = 0
                 break
             case "/":
                 result = firstOperand / secondOperand
+                firstOperand = result
                 document.getElementById("UI_Display").innerHTML = result
-                readyForFirstOperand = true
-                readyForSecondOperand = false
+                readyForOperator = true
                 readyForResult = false
+                secondOperand = 0
                 break
         }
     }
