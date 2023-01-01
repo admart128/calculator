@@ -6,17 +6,6 @@
             <title>Calculator</title>
         </head>
         <body>
-            <div id="ControlPanel">
-                <form>
-                    <input id="inputForFirstCalculator" type="text" placeholder="0" deactivate></input>
-                    <button onclick="addition()" type="button">Add</button>
-                    <button onclick="subtraction()" type="button">Subtract</button>
-                    <button onclick="multiplication()" type="button">Multiply</button>
-                    <button onclick="division()" type="button">Divide</button>
-                </form>
-            </div>
-            <div id="ResultDisplay">
-            </div>
             <div>
                 <table>
                     <tr>
@@ -26,32 +15,32 @@
                         <td><button>CE</button></td>
                     </tr>
                     <tr>
-                        <td><button onclick="operandInput(7)">7</button></td>
-                        <td><button onclick="operandInput(8)">8</button></td>
-                        <td><button onclick="operandInput(9)">9</button></td>
-                        <td><button onclick="inputDivision()">÷</button></td>
+                        <td><button onclick="inputOperand('7')">7</button></td>
+                        <td><button onclick="inputOperand('8')">8</button></td>
+                        <td><button onclick="inputOperand('9')">9</button></td>
+                        <td><button onclick="inputOperator('/')">÷</button></td>
                     </tr>
                     <tr>
-                        <td><button onclick="operandInput(4)">4</button></td>
-                        <td><button onclick="operandInput(5)">5</button></td>
-                        <td><button onclick="operandInput(6)">6</button></td>
-                        <td><button onclick="inputMultiplication()">×</button></td>
+                        <td><button onclick="inputOperand('4')">4</button></td>
+                        <td><button onclick="inputOperand('5')">5</button></td>
+                        <td><button onclick="inputOperand('6')">6</button></td>
+                        <td><button onclick="inputOperator('*')">×</button></td>
                     </tr>
                     <tr>
-                        <td><button onclick="operandInput(1)">1</button></td>
-                        <td><button onclick="operandInput(2)">2</button></td>
-                        <td><button onclick="operandInput(3)">3<button></td>
-                        <td><button onclick="inputSubtraction()">-</button></td>
+                        <td><button onclick="inputOperand('1')">1</button></td>
+                        <td><button onclick="inputOperand('2')">2</button></td>
+                        <td><button onclick="inputOperand('3')">3</button></td>
+                        <td><button onclick="inputOperator('-')">-</button></td>
                     </tr>
                     <tr>
-                        <td><button onclick="operandInput(0)">0</button></td>
-                        <td><button onclick="inputDecimal()">.</button></td>
-                        <td><button onclick="calculateResult()">=</button></td>
-                        <td><button onclick="inputAddition()">+</button></td>
+                        <td><button onclick="inputOperand('0')">0</button></td>
+                        <td><button onclick="inputDecimal('.')">.</button></td>
+                        <td><button onclick="getResult()">=</button></td>
+                        <td><button onclick="inputOperator('+')">+</button></td>
                     </tr>
                 </table>
             </div>
-            <div id="ResultDisplay2">
+            <div id="UI_Display">
 
             </div>
             <script src="script.js"></script>
