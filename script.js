@@ -6,6 +6,7 @@ let readyForFirstOperand = true
 let readyForOperator = false
 let readyForSecondOperand = false
 let readyForResult = false
+document.getElementById("UI_Display").innerHTML = 0
 
 function debug() {
     console.log("firstOperand: " + firstOperand)
@@ -16,6 +17,18 @@ function debug() {
     console.log("readyForOperator: " + readyForOperator)
     console.log("readyForSecondOperand: " + readyForSecondOperand)
     console.log("readyForResult: " + readyForResult) 
+}
+
+function allClear() {
+    firstOperand = 0
+    operator = ''
+    secondOperand = 0
+    result = 0
+    readyForFirstOperand = true
+    readyForOperator = false
+    readyForSecondOperand = false
+    readyForResult = false
+    document.getElementById("UI_Display").innerHTML = 0
 }
 
 function inputOperand(a) { 
