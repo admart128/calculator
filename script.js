@@ -1,7 +1,10 @@
+//FIX WHERE CANT PUT NUMBER AFTER DEIMCAL
+
 let firstOperand = 0
 let operator = ''
 let secondOperand = 0
 let result = 0
+let readyForDecimal = true
 let readyForFirstOperand = true
 let readyForOperator = false
 let readyForSecondOperand = false
@@ -9,6 +12,7 @@ let readyForResult = false
 document.getElementById("UI_Display").innerHTML = 0
 
 function debug() {
+    console.log("readyForDecimal: " + readyForDecimal)
     console.log("firstOperand: " + firstOperand)
     console.log("operator: " + operator)
     console.log("secondOperand: " + secondOperand)
@@ -24,6 +28,7 @@ function allClear() {
     operator = ''
     secondOperand = 0
     result = 0
+    readyForDecimal = true
     readyForFirstOperand = true
     readyForOperator = false
     readyForSecondOperand = false
@@ -33,16 +38,27 @@ function allClear() {
 
 function inputOperand(a) { 
     if (readyForFirstOperand) {
+        //if (firstOperand == 0) {
+          //  firstOperand = parseInt(firstOperand)
+        //}
         firstOperand = firstOperand + a
-        firstOperand = parseInt(firstOperand)
+        if (readyForDecimal) {
+            firstOperand = parseInt(firstOperand)
+        }
         if (readyForOperator == false) {
             readyForOperator = true
         }
-        document.getElementById("UI_Display").innerHTML = firstOperand 
+        document.getElementById("UI_Display").innerHTML = firstOperand
+        firstOperand = parseFloat(firstOperand) 
     }
     if (readyForSecondOperand) {
+        //if (secondOperand == 0) {
+         //   secondOperand = parseInt(secondOperand)
+        //}
         secondOperand = secondOperand + a
-        secondOperand = parseInt(secondOperand)
+        if (readyForDecimal) {
+            secondOperand = parseInt(secondOperand)
+        }
         if (readyForOperator) {
             readyForOperator = false
         }
@@ -50,18 +66,36 @@ function inputOperand(a) {
             readyForResult = true
         }
         document.getElementById("UI_Display").innerHTML = secondOperand
+        secondOperand = parseFloat(secondOperand)
     }
 }
 
 function inputOperator(a) {
     if (readyForOperator) {
         operator = a
+        readyForDecimal = true
         readyForFirstOperand = false
         readyForSecondOperand = true
         document.getElementById("UI_Display").innerHTML = operator
     }
 }
 
+function inputDecimal(a) {
+    if (readyForFirstOperand && readyForDecimal) {
+        firstOperand = firstOperand + a
+        //firstOperand = parseInt(firstOperand)
+        readyForDecimal = false
+        document.getElementById("UI_Display").innerHTML = firstOperand
+        //firstOperand = parseInt(firstOperand)
+    }
+    if (readyForSecondOperand && readyForDecimal) {
+        secondOperand = secondOperand + a
+        //secondOperand = parseInt(secondOperand)
+        readyForDecimal = false
+        document.getElementById("UI_Display").innerHTML = secondOperand
+        //secondOperand = parseInt(secondOperand)
+    }
+}
 function getResult() {
     if (readyForResult) {
         switch(operator) {
@@ -69,6 +103,7 @@ function getResult() {
                 result = firstOperand + secondOperand
                 firstOperand = result
                 document.getElementById("UI_Display").innerHTML = result
+                readyForDecimal = true
                 readyForOperator = true
                 readyForResult = false
                 secondOperand = 0
@@ -77,6 +112,7 @@ function getResult() {
                 result = firstOperand - secondOperand
                 firstOperand = result
                 document.getElementById("UI_Display").innerHTML = result
+                readyForDecimal = true
                 readyForOperator = true
                 readyForResult = false
                 secondOperand = 0
@@ -85,12 +121,14 @@ function getResult() {
                 result = firstOperand * secondOperand
                 firstOperand = result
                 document.getElementById("UI_Display").innerHTML = result
+                readyForDecimal = true
                 readyForOperator = true
                 readyForResult = false
                 secondOperand = 0
                 break
             case "/":
                 result = firstOperand / secondOperand
+                readyForDecimal = true
                 firstOperand = result
                 document.getElementById("UI_Display").innerHTML = result
                 readyForOperator = true
