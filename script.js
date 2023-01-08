@@ -9,7 +9,7 @@ let readyForFirstOperand = true
 let readyForOperator = false
 let readyForSecondOperand = false
 let readyForResult = false
-document.getElementById("UI_Display").innerHTML = 0
+document.getElementById("UI_Display_1").innerHTML = 0
 
 function debug() {
     console.log("readyForDecimal: " + readyForDecimal)
@@ -33,7 +33,7 @@ function allClear() {
     readyForOperator = false
     readyForSecondOperand = false
     readyForResult = false
-    document.getElementById("UI_Display").innerHTML = 0
+    document.getElementById("UI_Display_1").innerHTML = 0
 }
 
 function inputOperand(a) { 
@@ -48,7 +48,7 @@ function inputOperand(a) {
         if (readyForOperator == false) {
             readyForOperator = true
         }
-        document.getElementById("UI_Display").innerHTML = firstOperand
+        document.getElementById("UI_Display_1").innerHTML = firstOperand
         firstOperand = parseFloat(firstOperand) 
     }
     if (readyForSecondOperand) {
@@ -65,7 +65,7 @@ function inputOperand(a) {
         if (readyForResult == false) {
             readyForResult = true
         }
-        document.getElementById("UI_Display").innerHTML = secondOperand
+        document.getElementById("UI_Display_1").innerHTML = secondOperand
         secondOperand = parseFloat(secondOperand)
     }
 }
@@ -76,7 +76,7 @@ function inputOperator(a) {
         readyForDecimal = true
         readyForFirstOperand = false
         readyForSecondOperand = true
-        document.getElementById("UI_Display").innerHTML = operator
+        document.getElementById("UI_Display_2").innerHTML = operator
     }
 }
 
@@ -85,14 +85,14 @@ function inputDecimal(a) {
         firstOperand = firstOperand + a
         //firstOperand = parseInt(firstOperand)
         readyForDecimal = false
-        document.getElementById("UI_Display").innerHTML = firstOperand
+        document.getElementById("UI_Display_1").innerHTML = firstOperand
         //firstOperand = parseInt(firstOperand)
     }
     if (readyForSecondOperand && readyForDecimal) {
         secondOperand = secondOperand + a
         //secondOperand = parseInt(secondOperand)
         readyForDecimal = false
-        document.getElementById("UI_Display").innerHTML = secondOperand
+        document.getElementById("UI_Display_1").innerHTML = secondOperand
         //secondOperand = parseInt(secondOperand)
     }
 }
@@ -102,7 +102,7 @@ function getResult() {
             case "+":
                 result = firstOperand + secondOperand
                 firstOperand = result
-                document.getElementById("UI_Display").innerHTML = result
+                document.getElementById("UI_Display_1").innerHTML = result
                 readyForDecimal = true
                 readyForOperator = true
                 readyForResult = false
@@ -111,7 +111,7 @@ function getResult() {
             case "-":
                 result = firstOperand - secondOperand
                 firstOperand = result
-                document.getElementById("UI_Display").innerHTML = result
+                document.getElementById("UI_Display_1").innerHTML = result
                 readyForDecimal = true
                 readyForOperator = true
                 readyForResult = false
@@ -120,7 +120,7 @@ function getResult() {
             case "*":
                 result = firstOperand * secondOperand
                 firstOperand = result
-                document.getElementById("UI_Display").innerHTML = result
+                document.getElementById("UI_Display_1").innerHTML = result
                 readyForDecimal = true
                 readyForOperator = true
                 readyForResult = false
@@ -130,7 +130,7 @@ function getResult() {
                 result = firstOperand / secondOperand
                 readyForDecimal = true
                 firstOperand = result
-                document.getElementById("UI_Display").innerHTML = result
+                document.getElementById("UI_Display_1").innerHTML = result
                 readyForOperator = true
                 readyForResult = false
                 secondOperand = 0
