@@ -15,31 +15,31 @@
                     <td><button onclick="debug()">🔎🪲</button></td>
                     <td><button>Spare</button></td>
                     <td><button>Spare</button></td>
-                    <td><button onclick="allClear()">AC</button></td>
+                    <td><button id="button-allClear" onclick="allClear()">AC</button></td>
                 </tr>
                 <tr>
-                    <td><button onclick="inputOperand('7')">7</button></td>
-                    <td><button onclick="inputOperand('8')">8</button></td>
-                    <td><button onclick="inputOperand('9')">9</button></td>
-                    <td><button onclick="inputOperator('/')">÷</button></td>
+                    <td><button id="button-7" onclick="inputOperand('7')">7</button></td>
+                    <td><button id="button-8" onclick="inputOperand('8')">8</button></td>
+                    <td><button id="button-9" onclick="inputOperand('9')">9</button></td>
+                    <td><button id="button-divide" onclick="inputOperator('/')">÷</button></td>
                 </tr>
                 <tr>
-                    <td><button onclick="inputOperand('4')">4</button></td>
-                    <td><button onclick="inputOperand('5')">5</button></td>
-                    <td><button onclick="inputOperand('6')">6</button></td>
-                    <td><button onclick="inputOperator('*')">×</button></td>
+                    <td><button id="button-4" onclick="inputOperand('4')">4</button></td>
+                    <td><button id="button-5" onclick="inputOperand('5')">5</button></td>
+                    <td><button id="button-6" onclick="inputOperand('6')">6</button></td>
+                    <td><button id="button-multiply" onclick="inputOperator('*')">×</button></td>
                 </tr>
                 <tr>
-                    <td><button onclick="inputOperand('1')">1</button></td>
-                    <td><button onclick="inputOperand('2')">2</button></td>
-                    <td><button onclick="inputOperand('3')">3</button></td>
-                    <td><button onclick="inputOperator('-')">-</button></td>
+                    <td><button id="button-1" onclick="inputOperand('1')">1</button></td>
+                    <td><button id="button-2" onclick="inputOperand('2')">2</button></td>
+                    <td><button id="button-3" onclick="inputOperand('3')">3</button></td>
+                    <td><button id="button-subtract" onclick="inputOperator('-')">-</button></td>
                 </tr>
                 <tr>
-                    <td><button onclick="inputOperand('0')">0</button></td>
-                    <td><button onclick="inputDecimal('.')">.</button></td>
-                    <td><button onclick="operate(firstOperand, secondOperand, operator)">=</button></td>
-                    <td><button onclick="inputOperator('+')">+</button></td>
+                    <td><button id="button-0" onclick="inputOperand('0')">0</button></td>
+                    <td><button id="button-decimal" onclick="inputDecimal('.')">.</button></td>
+                    <td><button id="button-operate" onclick="operate(firstOperand, secondOperand, operator)">=</button></td>
+                    <td><button id="button-add" onclick="inputOperator('+')">+</button></td>
                 </tr>
             </table>
         </div>

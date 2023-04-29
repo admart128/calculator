@@ -24,6 +24,21 @@ function allClear() {
     document.getElementById("primary-display").innerText = 0
 }
 
+function debug() {
+    console.log("👇 DEBUG START 👇")
+    console.log("firstOperand: " + firstOperand)
+    console.log("secondOperand: " + secondOperand)
+    console.log("operator: " + operator)
+    console.log("result: " + result)
+    console.log("readyForFirstOperand: " + readyForFirstOperand)
+    console.log("readyForOperator: " + readyForOperator)
+    console.log("readyForSecondOperand: " + readyForSecondOperand)
+    console.log("readyToOperate: " + readyToOperate)
+    console.log("readyForDecimal: " + readyForFirstDecimal)
+    console.log("readyForSecondDecimal: " + readyForSecondDecimal)
+    console.log("👆 DEBUG END 👆")
+}
+
 function inputDecimal(a) {
     if (readyForFirstDecimal) {
         if (document.getElementById("primary-display").innerText == '0') {
@@ -140,3 +155,33 @@ function clearAndCarryResult() {
     readyForFirstDecimal = true
     readyForSecondDecimal = false
 }
+
+document.addEventListener("keydown", 
+    (event) => {
+        const key = event.key;
+        if (key >= "0" && key <= "9") {
+            document.getElementById(`button-${key}`).click();
+        }
+        else if (key === ".") {
+            document.getElementById('button-decimal').click();
+        } 
+        else if (key === "+") {
+            document.getElementById('button-add').click();
+        } 
+        else if (key === "-") {
+            document.getElementById('button-subtract').click();
+        } 
+        else if (key === "*") {
+            document.getElementById('button-multiply').click();
+        } 
+        else if (key === "/") {
+            document.getElementById('button-divide').click();
+        } 
+        else if (key === "Enter" || key === "=") {
+            document.getElementById('button-operate').click();
+        } 
+        else if (key === "Escape") {
+            allClear();
+        }
+    }
+);
