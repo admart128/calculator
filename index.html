@@ -1,50 +1,48 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device_width, initial_scale=1.0">
-            <title>Calculator</title>
-        </head>
-        <body>
-            <div>
-                <table>
-                    <tr>
-                        <td><button onclick="debug()">Debug</button></td>
-                        <td><button>Spare</button></td>
-                        <td><button>Spare</button></td>
-                        <td><button onclick="allClear()">AC</button></td>
-                    </tr>
-                    <tr>
-                        <td><button onclick="inputOperand('7')">7</button></td>
-                        <td><button onclick="inputOperand('8')">8</button></td>
-                        <td><button onclick="inputOperand('9')">9</button></td>
-                        <td><button onclick="inputOperator('/')">÷</button></td>
-                    </tr>
-                    <tr>
-                        <td><button onclick="inputOperand('4')">4</button></td>
-                        <td><button onclick="inputOperand('5')">5</button></td>
-                        <td><button onclick="inputOperand('6')">6</button></td>
-                        <td><button onclick="inputOperator('*')">×</button></td>
-                    </tr>
-                    <tr>
-                        <td><button onclick="inputOperand('1')">1</button></td>
-                        <td><button onclick="inputOperand('2')">2</button></td>
-                        <td><button onclick="inputOperand('3')">3</button></td>
-                        <td><button onclick="inputOperator('-')">-</button></td>
-                    </tr>
-                    <tr>
-                        <td><button onclick="inputOperand('0')">0</button></td>
-                        <td><button onclick="inputDecimal('.')">.</button></td>
-                        <td><button onclick="getResult()">=</button></td>
-                        <td><button onclick="inputOperator('+')">+</button></td>
-                    </tr>
-                </table>
+<html>
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device_width, initial_scale=1.0">
+        <title>Calculator</title>
+    </head>
+    <body>
+        <div>
+            <div id="primary-display">
             </div>
-            <div id="UI_Display_1">
-
+            <div id="secondary-display">
             </div>
-            <div id="UI_Display_2">
-            </div>
-            <script src="script.js"></script>
-        </body>
-    </html>
+            <table>
+                <tr>
+                    <td><button onclick="debug()">🔎🪲</button></td>
+                    <td><button>Spare</button></td>
+                    <td><button>Spare</button></td>
+                    <td><button onclick="allClear()">AC</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="inputOperand('7')">7</button></td>
+                    <td><button onclick="inputOperand('8')">8</button></td>
+                    <td><button onclick="inputOperand('9')">9</button></td>
+                    <td><button onclick="inputOperator('/')">÷</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="inputOperand('4')">4</button></td>
+                    <td><button onclick="inputOperand('5')">5</button></td>
+                    <td><button onclick="inputOperand('6')">6</button></td>
+                    <td><button onclick="inputOperator('*')">×</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="inputOperand('1')">1</button></td>
+                    <td><button onclick="inputOperand('2')">2</button></td>
+                    <td><button onclick="inputOperand('3')">3</button></td>
+                    <td><button onclick="inputOperator('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="inputOperand('0')">0</button></td>
+                    <td><button onclick="inputDecimal('.')">.</button></td>
+                    <td><button onclick="operate(firstOperand, secondOperand, operator)">=</button></td>
+                    <td><button onclick="inputOperator('+')">+</button></td>
+                </tr>
+            </table>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

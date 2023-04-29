@@ -1,140 +1,112 @@
-//FIX WHERE CANT PUT NUMBER AFTER DEIMCAL
-
-let firstOperand = 0
-let operator = ''
-let secondOperand = 0
+let firstOperand = ''
+let secondOperand = ''
+let operator = null
 let result = 0
-let readyForDecimal = true
 let readyForFirstOperand = true
-let readyForOperator = false
+let readyForOperator = true
 let readyForSecondOperand = false
-let readyForResult = false
-document.getElementById("UI_Display_1").innerHTML = 0
-
-function debug() {
-    console.log("readyForDecimal: " + readyForDecimal)
-    console.log("firstOperand: " + firstOperand)
-    console.log("operator: " + operator)
-    console.log("secondOperand: " + secondOperand)
-    console.log("result: " + result)
-    console.log("readyForFirstOperand: " + readyForFirstOperand)
-    console.log("readyForOperator: " + readyForOperator)
-    console.log("readyForSecondOperand: " + readyForSecondOperand)
-    console.log("readyForResult: " + readyForResult) 
-}
+let readyToOperate = false
+document.getElementById("primary-display").innerText = 0
 
 function allClear() {
-    firstOperand = 0
-    operator = ''
-    secondOperand = 0
+    firstOperand = ''
+    secondOperand = ''
+    operator = null
     result = 0
-    readyForDecimal = true
     readyForFirstOperand = true
-    readyForOperator = false
+    readyForOperator = true
     readyForSecondOperand = false
-    readyForResult = false
-    document.getElementById("UI_Display_1").innerHTML = 0
+    readyToOperate = false
+    document.getElementById("primary-display").innerText = 0
 }
 
 function inputOperand(a) { 
     if (readyForFirstOperand) {
-        //if (firstOperand == 0) {
-          //  firstOperand = parseInt(firstOperand)
-        //}
-        firstOperand = firstOperand + a
-        if (readyForDecimal) {
-            firstOperand = parseInt(firstOperand)
+        if (document.getElementById("primary-display").innerText == result) {
+            document.getElementById("primary-display").innerText = a
         }
-        if (readyForOperator == false) {
-            readyForOperator = true
+        else document.getElementById("primary-display").innerText = document.getElementById("primary-display").innerText + a
         }
-        document.getElementById("UI_Display_1").innerHTML = firstOperand
-        firstOperand = parseFloat(firstOperand) 
-    }
-    if (readyForSecondOperand) {
-        //if (secondOperand == 0) {
-         //   secondOperand = parseInt(secondOperand)
-        //}
+    else if (readyForSecondOperand) {
+        document.getElementById("primary-display").innerText = document.getElementById("primary-display").innerText + a
         secondOperand = secondOperand + a
-        if (readyForDecimal) {
-            secondOperand = parseInt(secondOperand)
-        }
-        if (readyForOperator) {
-            readyForOperator = false
-        }
-        if (readyForResult == false) {
-            readyForResult = true
-        }
-        document.getElementById("UI_Display_1").innerHTML = secondOperand
-        secondOperand = parseFloat(secondOperand)
+        readyToOperate = true
     }
 }
 
 function inputOperator(a) {
-    if (readyForOperator) {
-        operator = a
-        readyForDecimal = true
-        readyForFirstOperand = false
-        readyForSecondOperand = true
-        document.getElementById("UI_Display_2").innerHTML = operator
-    }
-}
-
-function inputDecimal(a) {
-    if (readyForFirstOperand && readyForDecimal) {
-        firstOperand = firstOperand + a
-        //firstOperand = parseInt(firstOperand)
-        readyForDecimal = false
-        document.getElementById("UI_Display_1").innerHTML = firstOperand
-        //firstOperand = parseInt(firstOperand)
-    }
-    if (readyForSecondOperand && readyForDecimal) {
-        secondOperand = secondOperand + a
-        //secondOperand = parseInt(secondOperand)
-        readyForDecimal = false
-        document.getElementById("UI_Display_1").innerHTML = secondOperand
-        //secondOperand = parseInt(secondOperand)
-    }
-}
-function getResult() {
-    if (readyForResult) {
-        switch(operator) {
-            case "+":
-                result = firstOperand + secondOperand
-                firstOperand = result
-                document.getElementById("UI_Display_1").innerHTML = result
-                readyForDecimal = true
-                readyForOperator = true
-                readyForResult = false
-                secondOperand = 0
-                break
-            case "-":
-                result = firstOperand - secondOperand
-                firstOperand = result
-                document.getElementById("UI_Display_1").innerHTML = result
-                readyForDecimal = true
-                readyForOperator = true
-                readyForResult = false
-                secondOperand = 0
-                break
-            case "*":
-                result = firstOperand * secondOperand
-                firstOperand = result
-                document.getElementById("UI_Display_1").innerHTML = result
-                readyForDecimal = true
-                readyForOperator = true
-                readyForResult = false
-                secondOperand = 0
-                break
-            case "/":
-                result = firstOperand / secondOperand
-                readyForDecimal = true
-                firstOperand = result
-                document.getElementById("UI_Display_1").innerHTML = result
-                readyForOperator = true
-                readyForResult = false
-                secondOperand = 0
-                break
+    if (operator == null) {
+        if (readyForSecondOperand == false) {
+            operator = a
+            firstOperand = document.getElementById("primary-display").innerText
+            readyForFirstOperand = false
+            readyForSecondOperand = true
+            document.getElementById("primary-display").innerText = document.getElementById("primary-display").innerText + a
         }
     }
+    else if (operator !== null) {
+        let lastChar = document.getElementById("primary-display").innerText.slice(-1);
+        let operators = ["+", "-", "*", "/"];
+        if (operators.includes(lastChar)) {
+            operator = a;
+            document.getElementById("primary-display").innerText = document.getElementById("primary-display").innerText.slice(0, -1) + a;
+        }
+    }    
+}
+
+function add(a, b) {
+    return a + b
+}
+
+function subtract(a, b) {
+    return a - b
+}
+
+function multiply(a, b) {
+    return a * b
+}
+
+function divide(a, b) {
+    return a / b
+}
+
+function operate(a, b, operator) {
+    if (readyToOperate) {
+        a = Number(firstOperand)
+        b = Number(secondOperand)
+        switch(operator) {
+        case "+":
+            result = add(a, b);
+            clearAndCarryResult();
+            break;
+        case "-":
+            result = subtract(a, b);
+            clearAndCarryResult();
+            break;
+        case "*":
+            result = multiply(a, b);
+            clearAndCarryResult();
+            break;
+        case "/":
+            if (b == 0) {
+                alert("Cannot divide by zero.")
+            }    
+            else result = divide(a, b);
+            clearAndCarryResult();
+            break;
+        default:
+            return ''
+        }
+    }     
+}
+
+function clearAndCarryResult() {
+    document.getElementById("primary-display").innerText = result;
+    firstOperand = '';
+    secondOperand = '';
+    readyForFirstOperand = true;
+    readyForOperator = true;
+    readyForSecondOperand = false;
+    readyToOperate = false;
+    operator = null;
 }
