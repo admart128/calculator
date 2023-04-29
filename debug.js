@@ -8,4 +8,5 @@ function debug() {
     console.log("readyForOperator: " + readyForOperator)
     console.log("readyForSecondOperand: " + readyForSecondOperand)
     console.log("readyToOperate: " + readyToOperate)
+    console.log("readyForDecimal: " + readyForDecimal)
 }

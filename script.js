@@ -6,6 +6,8 @@ let readyForFirstOperand = true
 let readyForOperator = true
 let readyForSecondOperand = false
 let readyToOperate = false
+let readyForFirstDecimal = true
+let readyForSecondDecimal = false
 document.getElementById("primary-display").innerText = 0
 
 function allClear() {
@@ -17,17 +19,40 @@ function allClear() {
     readyForOperator = true
     readyForSecondOperand = false
     readyToOperate = false
+    readyForFirstDecimal = true
+    readyForSecondDecimal = false
     document.getElementById("primary-display").innerText = 0
+}
+
+function inputDecimal(a) {
+    if (readyForFirstDecimal) {
+        if (document.getElementById("primary-display").innerText == '0') {
+            document.getElementById("primary-display").innerText = "0."
+            readyForFirstDecimal = false
+            readyForOperator = false
+        }
+        else if (document.getElementById("primary-display").innerText !== '0') {
+            document.getElementById("primary-display").innerText = a
+            readyForFirstDecimal = false
+            readyForOperator = false
+        }
+    }
+    else if (readyForSecondDecimal) {
+        secondOperand = secondOperand + a
+        document.getElementById("primary-display").innerText = document.getElementById("primary-display").innerText + a
+        readyForSecondDecimal = false
+    }
 }
 
 function inputOperand(a) { 
     if (readyForFirstOperand) {
-        if (document.getElementById("primary-display").innerText == result) {
+        if (document.getElementById("primary-display").innerText == result && readyForFirstDecimal == true) {
             document.getElementById("primary-display").innerText = a
         }
         else document.getElementById("primary-display").innerText = document.getElementById("primary-display").innerText + a
-        }
+    }
     else if (readyForSecondOperand) {
+        readyForOperator = false
         document.getElementById("primary-display").innerText = document.getElementById("primary-display").innerText + a
         secondOperand = secondOperand + a
         readyToOperate = true
@@ -36,12 +61,15 @@ function inputOperand(a) {
 
 function inputOperator(a) {
     if (operator == null) {
-        if (readyForSecondOperand == false) {
+            let lastChar = document.getElementById("primary-display").innerText.slice(-1);
+            if (lastChar !== '.' && readyForSecondOperand == false) {
             operator = a
             firstOperand = document.getElementById("primary-display").innerText
             readyForFirstOperand = false
             readyForSecondOperand = true
             document.getElementById("primary-display").innerText = document.getElementById("primary-display").innerText + a
+            readyForFirstDecimal = false
+            readyForSecondDecimal = true
         }
     }
     else if (operator !== null) {
@@ -104,9 +132,11 @@ function clearAndCarryResult() {
     document.getElementById("primary-display").innerText = result;
     firstOperand = '';
     secondOperand = '';
+    operator = null;
     readyForFirstOperand = true;
     readyForOperator = true;
     readyForSecondOperand = false;
     readyToOperate = false;
-    operator = null;
+    readyForFirstDecimal = true
+    readyForSecondDecimal = false
 }
