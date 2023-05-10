@@ -1,0 +1,34 @@
+body {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#display-container {
+    background: #FFFFFF;
+    border-radius: 2px;
+}
+
+#calculator-body {
+    width: 100;
+    max-width: 150px;
+    background: #a9a9a9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#button-container {
+    background: #a9a9a9;
+    width: 50%;
+}
+
+#button-container > div {
+    display: flex;
+    justify-content: flex-start;
+    margin: 2px;
+}
+
+#button-container > div > div > button {
+    margin: 2px;
+}
+
