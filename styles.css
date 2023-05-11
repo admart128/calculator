@@ -5,6 +5,8 @@ body {
 }
 
 #display-container {
+    display: flex;
+    justify-content: flex-end;
     background: #FFFFFF;
     border-radius: 2px;
 }

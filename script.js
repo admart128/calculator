@@ -24,21 +24,6 @@ function allClear() {
     document.getElementById("display-container").innerText = 0
 }
 
-function debug() {
-    console.log("👇 DEBUG START 👇")
-    console.log("firstOperand: " + firstOperand)
-    console.log("secondOperand: " + secondOperand)
-    console.log("operator: " + operator)
-    console.log("result: " + result)
-    console.log("readyForFirstOperand: " + readyForFirstOperand)
-    console.log("readyForOperator: " + readyForOperator)
-    console.log("readyForSecondOperand: " + readyForSecondOperand)
-    console.log("readyToOperate: " + readyToOperate)
-    console.log("readyForDecimal: " + readyForFirstDecimal)
-    console.log("readyForSecondDecimal: " + readyForSecondDecimal)
-    console.log("👆 DEBUG END 👆")
-}
-
 function inputDecimal(a) {
     if (readyForFirstDecimal) {
         if (document.getElementById("display-container").innerText == '0') {
