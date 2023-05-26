@@ -5,7 +5,9 @@
 body {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 #calculator-body {
