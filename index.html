@@ -6,37 +6,41 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <div id="calculator-body">
-            <div id="display-container">
+        <!--Container for scaling while maintaining aspect ratio with CSS "bottom padding trick"-->
+        <div id="calculator-body-wrapper">
+            <div id="calculator-body">
+                <div id="display-container">
+                    0
+                </div>
+                <div id="button-container">
+                <div>
+                    <div><button id="button-7" onclick="inputOperand('7')">7</button></div>
+                    <div><button id="button-8" onclick="inputOperand('8')">8</button></div>
+                    <div><button id="button-9" onclick="inputOperand('9')">9</button></div>
+                    <div><button id="button-divide" onclick="inputOperator('/')">÷</button></div>
+                </div>
+                <div>
+                    <div><button id="button-4" onclick="inputOperand('4')">4</button></div>
+                    <div><button id="button-5" onclick="inputOperand('5')">5</button></div>
+                    <div><button id="button-6" onclick="inputOperand('6')">6</button></div>
+                    <div><button id="button-multiply" onclick="inputOperator('*')">×</button></div>
+                </div>
+                <div>
+                    <div><button id="button-1" onclick="inputOperand('1')">1</button></div>
+                    <div><button id="button-2" onclick="inputOperand('2')">2</button></div>
+                    <div><button id="button-3" onclick="inputOperand('3')">3</button></div>
+                    <div><button id="button-subtract" onclick="inputOperator('-')">-</button></div>
+                </div>
+                <div>
+                    <div><button id="button-0" onclick="inputOperand('0')">0</button></div>
+                    <div><button id="button-decimal" onclick="inputDecimal('.')">.</button></div>
+                    <div><button id="button-operate" onclick="operate(firstOperand, secondOperand, operator)">=</button></div>
+                    <div><button id="button-add" onclick="inputOperator('+')">+</button></div>
+                    <div><button id="button-allClear" onclick="allClear()">AC</button></div>
+                </div>
+                </div>
             </div>
-            <div id="button-container">
-            <div>
-                <div><button id="button-7" onclick="inputOperand('7')">7</button></div>
-                <div><button id="button-8" onclick="inputOperand('8')">8</button></div>
-                <div><button id="button-9" onclick="inputOperand('9')">9</button></div>
-                <div><button id="button-divide" onclick="inputOperator('/')">÷</button></div>
-            </div>
-            <div>
-                <div><button id="button-4" onclick="inputOperand('4')">4</button></div>
-                <div><button id="button-5" onclick="inputOperand('5')">5</button></div>
-                <div><button id="button-6" onclick="inputOperand('6')">6</button></div>
-                <div><button id="button-multiply" onclick="inputOperator('*')">×</button></div>
-            </div>
-            <div>
-                <div><button id="button-1" onclick="inputOperand('1')">1</button></div>
-                <div><button id="button-2" onclick="inputOperand('2')">2</button></div>
-                <div><button id="button-3" onclick="inputOperand('3')">3</button></div>
-                <div><button id="button-subtract" onclick="inputOperator('-')">-</button></div>
-            </div>
-            <div>
-                <div><button id="button-0" onclick="inputOperand('0')">0</button></div>
-                <div><button id="button-decimal" onclick="inputDecimal('.')">.</button></div>
-                <div><button id="button-operate" onclick="operate(firstOperand, secondOperand, operator)">=</button></div>
-                <div><button id="button-add" onclick="inputOperator('+')">+</button></div>
-                <div><button id="button-allClear" onclick="allClear()">AC</button></div>
-            </div>
-            </div>
-        </div>
+        <div>
         <script src="script.js"></script>
     </body>
 </html>
